@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: rgb(112, 143, 244,0.7);   
+    font-family: 'Roboto Slab', serif;
+
+}
+.navbar {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.name {
+    color: aliceblue;
+    font-size: 2rem;
+    margin-left: 10px;
+    font-family: 'DynaPuff', cursive;
+}
+.buttons {
+    display: flex;
+    flex-direction: row;
+}
+.add-Note {
+    margin: 7px;
+}
+.add-Note-btn {
+    border: none;
+    border-radius: 15px;
+    padding: 5px;
+    padding-bottom: 1px;
+    transition: 0.2s linear;
+}
+.add-Note-btn img{
+    height: 20px;
+    width: 20px;
+}
+.add-Note-btn:hover {
+    cursor: pointer;
+    box-shadow: 0 0 4px 4px rgb(112, 143, 244,0.5);
+}
+.search {
+    background-color: white;
+    border-radius: 50px;
+    margin: 5px 5px;
+    height: 30px;
+    
+}
+.search:hover{
+    box-shadow: 0 0 4px 4px rgb(112, 143, 244,0.5);
+}
+.search:hover > .search-txt{
+    width: 200px;
+    padding: 5px;
+    padding-left: 7px;
+    
+}
+.search-btn {
+    background: none;
+    border: none;
+    float: right;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 6px 4px 5px;
+    transition: 0.2s linear;
+}
+.search-btn img{
+    height: 17px;
+    width: 17px;
+}
+.search-btn:hover {
+    cursor: pointer;
+}
+.search-txt{
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    font-size: 1rem;
+    transition: 0.4s;
+    line-height: 18px;
+    width: 0;
+    font-family: 'Roboto Slab', serif;
+}
+.search input::placeholder{
+    font-size: 0.8rem;
+}
+.popup-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+.popup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.popup-box .popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+    transform: translate(-50%, -50%) scale(0.95);
+}
+.popup-box,
+.popup {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s ease;
+}
+.popup-box.show,
+.popup-box.show .popup {
+    opacity: 1;
+    pointer-events: auto;
+}
+.popup-box.show .popup {
+    transform: translate(-50%, -50%) scale(1);
+}
+.popup .content {
+    border-radius: 5px;
+    background: #fff;
+    width: calc(100% - 15px);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.content header {
+    padding: 10px 25px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.content header p {
+    font-size: 20px;
+    font-weight: 500;
+}
+.close {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit; 
+    font-size: 1.2rem;
+}
+.content form {
+    margin: 15px 25px 10px;
+}
+.content form .row {
+    margin-bottom: 10px;
+}
+form .row label {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 4px;
+}
+form :where(input, textarea) {
+    height: 30px;
+    width: 100%;
+    outline: none;
+    font-size: 17px;
+    padding: 0 7px;
+    border-radius: 4px;
+    border: 1px solid #999;
+    font-family: 'Roboto Slab', serif;
+}
+form :where(input, textarea):focus {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.11);
+}
+form .row textarea {
+    height: 70px;
+    resize: none;
+    padding: 3px 7px;
+}
+form button {
+    width: 100%;
+    height: 30px;
+    color: #fff;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+    border-radius: 4px;
+    background: rgb(112, 143, 244);
+    font-family: 'Roboto Slab', serif;
+}
+.notes-sec {
+    margin: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 256px);
+    gap: 25px;
+}
+.your{
+    display: none
+}
+.notes-sec li {
+    height: 200px;
+    list-style: none;
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px 20px 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+.note {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.note .details {
+    max-height: 165px;
+    overflow-y: auto;
+}
+.note .details::-webkit-scrollbar,
+.popup textarea::-webkit-scrollbar {
+    width: 0;
+}
+.note .details:hover::-webkit-scrollbar,
+.popup textarea:hover::-webkit-scrollbar {
+    width: 5px;
+}
+.note .details:hover::-webkit-scrollbar-track,
+.popup textarea:hover::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 25px;
+}
+.note .details:hover::-webkit-scrollbar-thumb,
+.popup textarea:hover::-webkit-scrollbar-thumb {
+    background: #e6e6e6;
+    border-radius: 25px;
+}
+.details p {
+    font-size: 22px;
+    font-weight: 500;
+}
+.details span {
+    display: block;
+    margin-top: 5px;
+    color: rgb(79, 78, 78);
+    font-size: 16px;
+}
+.notes-sec .bottom {
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.bottom span {
+    color: #4d4b4b;
+    font-size: 14px;
+}
+.edit-btn {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    margin-right: 5px;
+}
+.edit-btn img {
+    height: 15px;
+    width: 15px;
+}
+.delete-btn {
+    position: absolute;
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit; 
+}
+.delete-btn img {
+    height: 15px;
+    width: 15px;
+}
+
+@media (max-width: 660px){
+    .name{
+        font-size: 1.5rem;
+        margin: 4px 7px;
+    }
+    .notes-sec{
+      margin: 15px;
+      gap: 15px;
+      grid-template-columns: repeat(auto-fill, 100%);
+    }
+    .search:hover > .search-txt{
+        width: 100px;   
+    }
+    .notes-sec{
+        margin-top: 50px;
+    }
+}

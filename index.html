@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Notes</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.png">
+</head>
+<body>
+  <div class="navbar">
+    <div class="name">
+      <p>Happy Notes</p>
+    </div>
+    <div class="buttons">
+      <div class="add-Note">
+        <button class="add-Note-btn">
+          <img src="img/add (1).png" alt="">
+        </button>
+      </div>
+      <div class="search">
+        <input class="search-txt" type="text" placeholder="Type to Search notes">
+        <button class="search-btn">
+          <img src="img/search-interface-symbol.png" alt="">
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="popup-box">
+    <div class="popup">
+      <div class="content">
+        <header>
+          <p>Add a new note</p>
+          <button class="close">x</button>
+        </header>
+        <form action="#">
+          <div class="row title">
+            <label>Title</label>
+            <input type="text" spellcheck="false">
+          </div>
+          <div class="row description">
+            <label>Description</label>
+            <textarea spellcheck="false"></textarea>
+          </div>
+          <button class="popup-addNote">Add Note</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="notes-sec">
+    <p class="your">Your notes</p>
+  </div>
+  <script src="js/index.js"></script>
+</body>
+</html>
